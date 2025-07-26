@@ -1,7 +1,7 @@
 import 'dart:convert';
-// This is a model class for User, which represents a user in the application.`
+
 class User {
-  //?:means optional
+  
   final String? name;
   final String email;
   final String? mobile;
@@ -15,7 +15,7 @@ class User {
    this.country,
    required this.password,
 });
-//byetaaba kel shi info hon w byenaamalon convertion la json bl code l tahet
+
   Map<String, dynamic> toMap() {
 return{
 'name':name,

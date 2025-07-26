@@ -15,7 +15,7 @@ class LoginPage extends GetView<LoginController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 🖼️ Logo or illustration
+            
             Center(
               child: Column(
                 children: [
@@ -38,7 +38,7 @@ class LoginPage extends GetView<LoginController> {
 
             const SizedBox(height: 40),
 
-            // 📧 Email field
+            
             Text("Email", style: labelStyle),
             const SizedBox(height: 6),
             TextField(
@@ -49,7 +49,7 @@ class LoginPage extends GetView<LoginController> {
 
             const SizedBox(height: 20),
 
-            // 🔒 Password field
+            
             Text("Password", style: labelStyle),
             const SizedBox(height: 6),
             TextField(
@@ -60,7 +60,7 @@ class LoginPage extends GetView<LoginController> {
 
             const SizedBox(height: 10),
 
-            // 🔁 Forgot password
+            
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
@@ -71,7 +71,7 @@ class LoginPage extends GetView<LoginController> {
 
             const SizedBox(height: 20),
 
-            // 🔘 Login Button
+            
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -95,7 +95,7 @@ class LoginPage extends GetView<LoginController> {
 
             const SizedBox(height: 30),
 
-            // 📝 Register prompt
+            
             Center(
               child: TextButton(
                 onPressed: () {
@@ -124,7 +124,7 @@ class LoginPage extends GetView<LoginController> {
     );
   }
 
-  // 🎨 Custom input field styling
+  
   InputDecoration inputStyle(String hint) {
     return InputDecoration(
       hintText: hint,
@@ -135,6 +135,6 @@ class LoginPage extends GetView<LoginController> {
     );
   }
 
-  // 🏷️ Label style
+  
   final labelStyle = const TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
 }

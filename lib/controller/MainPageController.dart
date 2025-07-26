@@ -9,7 +9,7 @@ class FoodItem {
 }
 
 class MainPageController extends GetxController {
-  // Static list – never changes
+  
   final List<FoodItem> menu = [
     FoodItem('Classic Burger', 5.99, 'images/burger.jpg'),
     FoodItem('Pepperoni Pizza', 8.49, 'images/pizza.jpg'),

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../controller/RegistrationController.dart';
 
 class Registration extends GetView<RegistrationController> {
-  // Obscure-state only for this screen
+
   final RxBool _obscurePassword = true.obs;
 
   Registration({Key? key}) : super(key: key);

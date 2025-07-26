@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // Register user
+ 
   Future<void> register(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../controller/MainPageController.dart';   // for FoodItem
+import '../controller/MainPageController.dart';   
 
 class CartItem {
   final FoodItem food;
@@ -8,7 +8,7 @@ class CartItem {
 }
 
 class CartController extends GetxController {
-  final _items = <String, CartItem>{}.obs;   // key: food.name
+  final _items = <String, CartItem>{}.obs;   
 
   List<CartItem> get items => _items.values.toList();
   double get total =>

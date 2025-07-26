@@ -18,9 +18,9 @@ class CartPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: scheme.onSurface,
       ),
-      // 1. stop extending behind AppBar
+      
       extendBodyBehindAppBar: false,
-      // 2. wrap body in SafeArea
+      
       body: SafeArea(
         child: Obx(() {
           if (cart.items.isEmpty) {
@@ -30,7 +30,7 @@ class CartPage extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.separated(
-                  // 3. extra top padding so first card is below AppBar
+               
                   padding: const EdgeInsets.only(
                     left: 20,
                     right: 20,
@@ -54,7 +54,7 @@ class CartPage extends StatelessWidget {
   }
 }
 
-/* ---------- Empty Cart ---------- */
+
 class _EmptyCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class _EmptyCart extends StatelessWidget {
   }
 }
 
-/* ---------- Glass-style Cart Card ---------- */
+
 class _CartItemCard extends StatelessWidget {
   final CartItem cartItem;
   const _CartItemCard({required this.cartItem});
@@ -209,7 +209,7 @@ class _CartItemCard extends StatelessWidget {
   }
 }
 
-/* ---------- Bottom Checkout Bar ---------- */
+
 class _CheckoutBar extends StatelessWidget {
   final double total;
   const _CheckoutBar({required this.total});

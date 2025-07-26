@@ -19,8 +19,7 @@ class LoginController extends GetxController {
       print("✅ Login successful for: ${userCredential.user?.email}");
       Get.snackbar("Success", "Logged in successfully");
       Get.offAll(() => MainPage());
-      // Navigate to your app's home page or dashboard here
-      // e.g., Get.offNamed(AppRoute.home);
+     
     } on FirebaseAuthException catch (e) {
       String errorMessage = "Login failed";
 
