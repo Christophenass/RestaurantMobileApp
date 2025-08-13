@@ -3,8 +3,89 @@ import 'package:get/get.dart';
 import '../controller/RegistrationController.dart';
 
 class Registration extends GetView<RegistrationController> {
-
   final RxBool _obscurePassword = true.obs;
+
+  final List<String> countries = [
+    'Afghanistan',
+    'Albania',
+    'Algeria',
+    'Angola',
+    'Argentina',
+    'Australia',
+    'Austria',
+    'Bangladesh',
+    'Belgium',
+    'Bolivia',
+    'Brazil',
+    'Bulgaria',
+    'Cambodia',
+    'Cameroon',
+    'Canada',
+    'Chile',
+    'China',
+    'Colombia',
+    'Costa Rica',
+    'Croatia',
+    'Cuba',
+    'Czech Republic',
+    'Denmark',
+    'Ecuador',
+    'Egypt',
+    'Ethiopia',
+    'Finland',
+    'France',
+    'Germany',
+    'Greece',
+    'Hungary',
+    'Iceland',
+    'India',
+    'Indonesia',
+    'Iran',
+    'Iraq',
+    'Ireland',
+    'Israel',
+    'Italy',
+    'Japan',
+    'Jordan',
+    'Kazakhstan',
+    'Kenya',
+    'Kuwait',
+    'Lebanon',
+    'Libya',
+    'Malaysia',
+    'Mexico',
+    'Morocco',
+    'Nepal',
+    'Netherlands',
+    'New Zealand',
+    'Nigeria',
+    'Norway',
+    'Pakistan',
+    'Panama',
+    'Peru',
+    'Philippines',
+    'Poland',
+    'Portugal',
+    'Qatar',
+    'Romania',
+    'Russia',
+    'Saudi Arabia',
+    'Singapore',
+    'South Africa',
+    'South Korea',
+    'Spain',
+    'Sweden',
+    'Switzerland',
+    'Syria',
+    'Thailand',
+    'Turkey',
+    'Ukraine',
+    'United Arab Emirates',
+    'United Kingdom',
+    'United States',
+    'Vietnam',
+  ];
+  final RxString selectedCountry = ''.obs;
 
   Registration({Key? key}) : super(key: key);
 
@@ -55,11 +136,7 @@ class Registration extends GetView<RegistrationController> {
                     ),
                     const SizedBox(height: 20),
 
-                    _buildField(
-                      label: "Country",
-                      hint: "Enter your country",
-                      controller: controller.countryCtrl,
-                    ),
+                    _buildCountryList(),
                     const SizedBox(height: 20),
 
                     _buildPasswordField(),
@@ -219,6 +296,42 @@ class Registration extends GetView<RegistrationController> {
                     _obscurePassword.value = !_obscurePassword.value,
               ),
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCountryList() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Select Country",
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+        ),
+        const SizedBox(height: 6),
+        Container(
+          height: 200, // Fixed height for the ListView
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey.withOpacity(0.3)),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: ListView.builder(
+            itemCount: countries.length,
+            itemBuilder: (context, index) {
+              return Obx(
+                () => ListTile(
+                  title: Text(countries[index]),
+                  selected: selectedCountry.value == countries[index],
+                  selectedTileColor: Colors.deepPurple.withOpacity(0.1),
+                  onTap: () {
+                    selectedCountry.value = countries[index];
+                    controller.countryCtrl.text = countries[index];
+                  },
+                ),
+              );
+            },
           ),
         ),
       ],
