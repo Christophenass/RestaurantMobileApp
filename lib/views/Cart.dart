@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/CartController.dart';
+import 'ReceiptUploadPage.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage({Key? key}) : super(key: key);
+class Cart extends GetView<CartController> {
+  const Cart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +19,7 @@ class CartPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: scheme.onSurface,
       ),
-      
       extendBodyBehindAppBar: false,
-      
       body: SafeArea(
         child: Obx(() {
           if (cart.items.isEmpty) {
@@ -30,7 +29,6 @@ class CartPage extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.separated(
-               
                   padding: const EdgeInsets.only(
                     left: 20,
                     right: 20,
@@ -50,10 +48,49 @@ class CartPage extends StatelessWidget {
           );
         }),
       ),
+
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).colorScheme.primary,
+              Theme.of(context).colorScheme.secondary,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: FloatingActionButton.extended(
+          onPressed: () => Get.to(() => ReceiptUploadPage()),
+          label: const Text(
+            'Checkout',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          icon: const Icon(
+            Icons.shopping_bag_outlined,
+            color: Colors.white,
+            size: 26,
+          ),
+          backgroundColor: Colors.transparent, // so gradient shows
+          elevation: 0,
+        ),
+      ),
     );
   }
 }
-
 
 class _EmptyCart extends StatelessWidget {
   @override
@@ -84,7 +121,6 @@ class _EmptyCart extends StatelessWidget {
     );
   }
 }
-
 
 class _CartItemCard extends StatelessWidget {
   final CartItem cartItem;
@@ -209,7 +245,6 @@ class _CartItemCard extends StatelessWidget {
   }
 }
 
-
 class _CheckoutBar extends StatelessWidget {
   final double total;
   const _CheckoutBar({required this.total});
@@ -252,21 +287,6 @@ class _CheckoutBar extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-          ElevatedButton.icon(
-            icon: const Icon(Icons.shopping_bag_outlined),
-            label: const Text('Checkout'),
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.primary,
-              backgroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-            ),
-            onPressed: () {
-              Get.snackbar('Checkout', 'Proceeding to payment...');
-            },
           ),
         ],
       ),

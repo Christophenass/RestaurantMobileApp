@@ -37,7 +37,7 @@ class MainPage extends GetView<MainPageController> {
               isLabelVisible: count > 0,
               child: IconButton(
                 icon: const Icon(Icons.shopping_cart_outlined),
-                onPressed: () => Get.to(() => const CartPage()),
+                onPressed: () => Get.to(() => const Cart()),
               ),
             );
           }),
